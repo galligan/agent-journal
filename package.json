@@ -2,17 +2,25 @@
   "name": "private-journal-mcp",
   "version": "1.0.0",
   "description": "A lightweight MCP server that provides Claude with a private journaling capability to process feelings and thoughts",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "bin": {
-    "private-journal-mcp": "./dist/index.js"
+    "private-journal-mcp": "./bin/private-journal-mcp"
   },
   "scripts": {
-    "prepare": "npm run build",
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "start": "node dist/index.js",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "prepare": "bun run build:tsc",
+    "build": "bun build src/index.ts --compile --outfile dist/private-journal-mcp",
+    "build:production": "bun build src/index.ts --compile --minify --sourcemap --outfile dist/private-journal-mcp",
+    "build:tsc": "tsc",
+    "build:cross-platform": "bun run build:linux && bun run build:windows && bun run build:macos",
+    "build:linux": "bun build src/index.ts --compile --target=bun-linux-x64 --outfile dist/private-journal-mcp-linux",
+    "build:windows": "bun build src/index.ts --compile --target=bun-windows-x64 --outfile dist/private-journal-mcp-windows.exe",
+    "build:macos": "bun build src/index.ts --compile --target=bun-darwin-arm64 --outfile dist/private-journal-mcp-macos",
+    "dev": "bun --watch src/index.ts",
+    "dev:hot": "bun --hot src/index.ts",
+    "start": "bun src/index.ts",
+    "test": "bun test",
+    "test:jest": "jest",
+    "test:watch": "bun test --watch",
     "lint": "eslint src/**/*.ts",
     "format": "prettier --write src/**/*.ts"
   },
@@ -42,7 +50,13 @@
   },
   "files": [
     "dist/**/*",
+    "bin/**/*",
+    "src/**/*",
     "README.md",
     "LICENSE"
-  ]
+  ],
+  "engines": {
+    "bun": ">=1.0.0",
+    "node": ">=18.0.0"
+  }
 }

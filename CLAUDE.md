@@ -5,29 +5,38 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Common Development Commands
 
 ```bash
-# Build the project
-npm run build
+# Build the project (standalone binary)
+bun run build
 
-# Run tests
-npm test
+# Build production-optimized binary
+bun run build:production
+
+# Run tests with Bun (fast)
+bun test
 
 # Run tests in watch mode
-npm run test:watch
+bun test --watch
 
-# Development mode with TypeScript watcher
-npm run dev
+# Development mode with file watcher
+bun run dev
+
+# Hot reload development mode
+bun run dev:hot
 
 # Lint the code
-npm run lint
+bun run lint
 
 # Format the code
-npm run format
+bun run format
 
-# Start the server
-npm start
+# Start the server directly
+bun start
 
 # Run a single test file
-npx jest tests/journal.test.ts
+bun test tests/journal.test.ts
+
+# Build cross-platform binaries
+bun run build:cross-platform
 ```
 
 ## Architecture Overview
@@ -51,7 +60,8 @@ This is an MCP (Model Context Protocol) server that provides Claude with private
 - **Personal journals**: `~/.private-journal/` for cross-project personal thoughts  
 - **Daily structure**: `YYYY-MM-DD/HH-MM-SS-μμμμμμ.md` with microsecond precision
 - **Search index**: `.embedding` files alongside each journal entry for semantic search
-- TypeScript compilation to `dist/` for production
+- Bun compiles to standalone binaries in `dist/` (no Node.js dependency)
+- TypeScript compilation still available via `bun run build:tsc` for compatibility
 - Jest tests in `tests/` directory with comprehensive file system mocking
 
 ## MCP Integration Details
@@ -74,8 +84,9 @@ The server provides comprehensive journaling and search capabilities through the
 
 ## Testing Approach
 
-- Uses Jest with ts-jest preset and mocked transformers library for embedding tests
+- Uses Bun's built-in test runner (Jest-compatible) for fast test execution
 - Tests cover file system operations, timestamp formatting, directory creation, and search functionality
 - Temporary directories created/cleaned for each test to ensure isolation
 - Coverage tracking for core functionality (`src/journal.ts`, `src/types.ts`, `src/paths.ts`, `src/embeddings.ts`, `src/search.ts`)
 - Comprehensive embedding and search test suite with proper mocking for CI/CD environments
+- **Performance**: Tests run 2-4x faster with Bun compared to Jest
