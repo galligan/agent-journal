@@ -74,3 +74,4 @@ Closes #issue-number
 
 
 - Never use clock time (hours/days/weeks) to define the time it would take to work on a project, task, etc. Use t-shirt sizes only.
+- Any PR should be posted to `galligan/agent-journal` and not the `upstream` remote unless otherwise directed to.
