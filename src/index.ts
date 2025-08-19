@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-// ABOUTME: Main entry point for the private journal MCP server
+// ABOUTME: Main entry point for the agent journal MCP server
 // ABOUTME: Handles command line arguments and starts the server
 
 import * as path from 'path';
-import { PrivateJournalServer } from './server';
+import { AgentJournalServer } from './server';
 import { resolveProjectJournalPath } from './paths';
 
 function parseArguments(): string {
@@ -24,7 +24,7 @@ function parseArguments(): string {
 async function main(): Promise<void> {
   try {
     // Log environment info for debugging
-    console.error('=== Private Journal MCP Server Debug Info ===');
+    console.error('=== Agent Journal MCP Server Debug Info ===');
     console.error(`Node.js version: ${process.version}`);
     console.error(`Platform: ${process.platform}`);
     console.error(`Architecture: ${process.arch}`);
@@ -47,10 +47,10 @@ async function main(): Promise<void> {
     console.error(`Selected journal path: ${journalPath}`);
     console.error('===============================================');
     
-    const server = new PrivateJournalServer(journalPath);
+    const server = new AgentJournalServer(journalPath);
     await server.run();
   } catch (error) {
-    console.error('Failed to start private journal MCP server:', error);
+    console.error('Failed to start agent journal MCP server:', error);
     process.exit(1);
   }
 }

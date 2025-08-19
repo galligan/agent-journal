@@ -11,7 +11,7 @@ import { JournalManager } from './journal';
 import { ProcessFeelingsRequest, ProcessThoughtsRequest } from './types';
 import { SearchService } from './search';
 
-export class PrivateJournalServer {
+export class AgentJournalServer {
   private server: Server;
   private journalManager: JournalManager;
   private searchService: SearchService;
@@ -21,7 +21,7 @@ export class PrivateJournalServer {
     this.searchService = new SearchService(journalPath);
     this.server = new Server(
       {
-        name: 'private-journal-mcp',
+        name: 'agent-journal',
         version: '1.0.0',
       }
     );
@@ -64,7 +64,7 @@ export class PrivateJournalServer {
         },
         {
           name: 'search_journal',
-          description: "Search through your private journal entries using natural language queries. Returns semantically similar entries ranked by relevance.",
+          description: "Search through your agent journal entries using natural language queries. Returns semantically similar entries ranked by relevance.",
           inputSchema: {
             type: 'object',
             properties: {

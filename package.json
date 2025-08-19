@@ -1,10 +1,10 @@
 {
-  "name": "private-journal-mcp",
+  "name": "agent-journal",
   "version": "1.0.0",
-  "description": "A lightweight MCP server that provides Claude with a private journaling capability to process feelings and thoughts",
+  "description": "A comprehensive MCP server that provides AI agents with journaling and knowledge management capabilities",
   "main": "dist/index.js",
   "bin": {
-    "private-journal-mcp": "./bin/private-journal-mcp"
+    "agent-journal": "./bin/agent-journal"
   },
   "exports": {
     ".": {
@@ -15,13 +15,13 @@
   },
   "scripts": {
     "prepare": "bun run build:tsc",
-    "build": "bun build src/index.ts --compile --outfile dist/private-journal-mcp",
-    "build:production": "bun build src/index.ts --compile --minify --sourcemap --outfile dist/private-journal-mcp",
+    "build": "bun build src/index.ts --compile --outfile dist/agent-journal",
+    "build:production": "bun build src/index.ts --compile --minify --sourcemap --outfile dist/agent-journal",
     "build:tsc": "tsc",
     "build:cross-platform": "bun run build:linux && bun run build:windows && bun run build:macos",
-    "build:linux": "bun build src/index.ts --compile --target=bun-linux-x64 --outfile dist/private-journal-mcp-linux",
-    "build:windows": "bun build src/index.ts --compile --target=bun-windows-x64 --outfile dist/private-journal-mcp-windows.exe",
-    "build:macos": "bun build src/index.ts --compile --target=bun-darwin-arm64 --outfile dist/private-journal-mcp-macos",
+    "build:linux": "bun build src/index.ts --compile --target=bun-linux-x64 --outfile dist/agent-journal-linux",
+    "build:windows": "bun build src/index.ts --compile --target=bun-windows-x64 --outfile dist/agent-journal-windows.exe",
+    "build:macos": "bun build src/index.ts --compile --target=bun-darwin-arm64 --outfile dist/agent-journal-macos",
     "dev": "bun --watch src/index.ts",
     "dev:hot": "bun --hot src/index.ts",
     "start": "bun src/index.ts",
@@ -35,9 +35,10 @@
   "keywords": [
     "mcp",
     "journal",
-    "private",
+    "agent",
     "claude",
-    "ai"
+    "ai",
+    "knowledge-management"
   ],
   "author": "Jesse Vincent <jesse@fsck.com>",
   "license": "MIT",

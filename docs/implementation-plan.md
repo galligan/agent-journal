@@ -1,4 +1,4 @@
-# Private Journal MCP Server - V1 Implementation Plan
+# Agent Journal MCP Server - V1 Implementation Plan
 
 ## Project Overview
 
@@ -20,7 +20,7 @@ Build a lightweight stdio-based MCP server in Node.js/TypeScript that provides C
 
 ### 1.3 Project Structure
 ```
-private-journal-mcp/
+agent-journal/
 ├── src/
 │   ├── index.ts              # Main entry point
 │   ├── server.ts             # MCP server implementation
@@ -37,7 +37,7 @@ private-journal-mcp/
 ## Phase 2: Core Journal Implementation
 
 ### 2.1 File System Operations
-- [ ] Implement directory creation logic (`.private-journal/YYYY-MM-DD/`)
+- [ ] Implement directory creation logic (`.agent/journal/YYYY-MM-DD/`)
 - [ ] Create timestamp generation with microsecond precision
 - [ ] Implement markdown file writing with proper headers
 - [ ] Add error handling for filesystem permissions
@@ -61,7 +61,7 @@ class JournalManager {
 
 ### 2.3 Command Line Argument Parsing
 - [ ] Implement `--journal-path` argument handling
-- [ ] Default to `{cwd}/.private-journal` when not specified
+- [ ] Default to `{cwd}/.agent/journal` when not specified
 - [ ] Validate provided paths and handle errors gracefully
 
 ## Phase 3: MCP Server Implementation

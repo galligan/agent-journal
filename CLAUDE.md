@@ -56,8 +56,8 @@ This is an MCP (Model Context Protocol) server that provides Claude with private
 - **MCP Tools Pattern**: Multiple tool endpoints (`process_thoughts`, `search_journal`, `read_journal_entry`, `list_recent_entries`) with schema validation and error handling
 
 **File Organization:**
-- **Project journals**: `.private-journal/` in project root for project-specific notes
-- **Personal journals**: `~/.private-journal/` for cross-project personal thoughts  
+- **Project journals**: `.agent/journal/` in project root for project-specific notes
+- **Personal journals**: `~/.agent/journal/` for cross-project personal thoughts  
 - **Daily structure**: `YYYY-MM-DD/HH-MM-SS-μμμμμμ.md` with microsecond precision
 - **Search index**: `.embedding` files alongside each journal entry for semantic search
 - Bun compiles to standalone binaries in `dist/` (no Node.js dependency)

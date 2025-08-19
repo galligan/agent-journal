@@ -1,4 +1,4 @@
-# Private Journal MCP Server Specification
+# Agent Journal MCP Server Specification
 
 ## Overview
 
@@ -42,7 +42,7 @@ This is your private space to be completely honest about what you're really thin
 ```
 
 ### Default Location
-- Default: `{current-working-directory}/.private-journal`
+- Default: `{current-working-directory}/.agent/journal`
 - Override: `--journal-path` command line argument
 
 ### Filename Format
@@ -67,7 +67,7 @@ I'm feeling uncertain about that last response. The user asked about optimizatio
 ## Error Handling
 
 ### Directory Creation
-- Auto-create `.private-journal` directory if it doesn't exist
+- Auto-create `.agent/journal` directory if it doesn't exist
 - Auto-create daily subdirectories as needed
 
 ### Filesystem Permissions
@@ -82,7 +82,7 @@ I'm feeling uncertain about that last response. The user asked about optimizatio
 
 ### Usage
 ```bash
-node private-journal-mcp-server.js [--journal-path <path>]
+node agent-journal-server.js [--journal-path <path>]
 ```
 
 ### Arguments
@@ -90,11 +90,11 @@ node private-journal-mcp-server.js [--journal-path <path>]
 
 ### Examples
 ```bash
-# Use default location (cwd/.private-journal)
-node private-journal-mcp-server.js
+# Use default location (cwd/.agent/journal)
+node agent-journal-server.js
 
 # Use custom location
-node private-journal-mcp-server.js --journal-path /home/user/my-journal
+node agent-journal-server.js --journal-path /home/user/my-journal
 ```
 
 ## Implementation Requirements

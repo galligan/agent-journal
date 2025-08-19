@@ -1,4 +1,4 @@
-# Private Journal MCP Server
+# Agent Journal MCP Server
 
 A comprehensive MCP (Model Context Protocol) server that provides Claude with private journaling and semantic search capabilities for processing thoughts, feelings, and insights.
 
@@ -25,43 +25,43 @@ A comprehensive MCP (Model Context Protocol) server that provides Claude with pr
 
 ### With Bun (Recommended - 10x faster)
 ```bash
-bun add -g private-journal-mcp
+bun add -g agent-journal
 ```
 
 Or install locally:
 ```bash
-bun add private-journal-mcp
+bun add agent-journal
 ```
 
 Additionally, consider documenting a Bun one-liner alternative to the `npx` flow:
 ```bash
-bunx github:obra/private-journal-mcp
+bunx github:galligan/agent-journal
 ```
 
 ### With npm
 ```bash
-npm install -g private-journal-mcp
+npm install -g agent-journal
 ```
 
 ## Usage
 
 ### Basic Usage
 ```bash
-private-journal-mcp
+agent-journal
 ```
 
-This creates journal entries in `.private-journal/` in the current working directory.
+This creates journal entries in `.agent/journal/` in the current working directory.
 
 ### Custom Journal Path
 ```bash
-private-journal-mcp --journal-path /path/to/my/journal
+agent-journal --journal-path /path/to/my/journal
 ```
 
 ### MCP Configuration
 
 #### Claude Code (One-liner)
 ```bash
-claude mcp add-json private-journal '{"type":"stdio","command":"npx","args":["github:obra/private-journal-mcp"]}' -s user
+claude mcp add-json agent-journal '{"type":"stdio","command":"npx","args":["github:galligan/agent-journal"]}' -s user
 ```
 
 #### Manual Configuration
@@ -70,9 +70,9 @@ Add to your MCP settings (e.g., Claude Desktop configuration):
 ```json
 {
   "mcpServers": {
-    "private-journal": {
+    "agent-journal": {
       "command": "npx",
-      "args": ["github:obra/private-journal-mcp"]
+      "args": ["github:galligan/agent-journal"]
     }
   }
 }
@@ -113,7 +113,7 @@ Browse recent entries chronologically:
 
 ### Project Journal (per project)
 ```
-.private-journal/
+.agent/journal/
 ├── 2025-05-31/
 │   ├── 14-30-45-123456.md          # Project notes entry
 │   ├── 14-30-45-123456.embedding   # Search index
@@ -122,7 +122,7 @@ Browse recent entries chronologically:
 
 ### User Journal (global)
 ```
-~/.private-journal/
+~/.agent/journal/
 ├── 2025-05-31/
 │   ├── 14-32-15-789012.md          # Personal thoughts entry
 │   ├── 14-32-15-789012.embedding   # Search index
