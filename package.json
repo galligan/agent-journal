@@ -2,9 +2,16 @@
   "name": "private-journal-mcp",
   "version": "1.0.0",
   "description": "A lightweight MCP server that provides Claude with a private journaling capability to process feelings and thoughts",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "bin": {
     "private-journal-mcp": "./bin/private-journal-mcp"
+  },
+  "exports": {
+    ".": {
+      "bun": "./src/index.ts",
+      "node": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
   },
   "scripts": {
     "prepare": "bun run build:tsc",
@@ -22,7 +29,8 @@
     "test:jest": "jest",
     "test:watch": "bun test --watch",
     "lint": "eslint src/**/*.ts",
-    "format": "prettier --write src/**/*.ts"
+    "format": "prettier --write src/**/*.ts",
+    "format:check": "prettier --check src/**/*.ts"
   },
   "keywords": [
     "mcp",

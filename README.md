@@ -25,12 +25,17 @@ A comprehensive MCP (Model Context Protocol) server that provides Claude with pr
 
 ### With Bun (Recommended - 10x faster)
 ```bash
-bun install -g private-journal-mcp
+bun add -g private-journal-mcp
 ```
 
 Or install locally:
 ```bash
-bun install private-journal-mcp
+bun add private-journal-mcp
+```
+
+Additionally, consider documenting a Bun one-liner alternative to the `npx` flow:
+```bash
+bunx github:obra/private-journal-mcp
 ```
 
 ### With npm
